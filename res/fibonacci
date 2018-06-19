@@ -1,0 +1,23 @@
+# Testowy program #
+
+stała całkowita pi = 3 ;
+
+fn fibonacci( całkowita n ) -> całkowita
+{
+    jeżeli( n < 1 )
+    {
+        zwróć -1;
+    };
+
+    jeżeli( ( n == 1 ) || ( n == 2 ) )
+    {
+        zwróć 1;
+    };
+
+    zwróć ( fibonacci( ( n - 1 ) ) + fibonacci( ( n - 2 ) ) );
+}
+
+fn start()
+{
+    ~ fibonacci( 2 );
+}
