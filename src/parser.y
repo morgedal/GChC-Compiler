@@ -3,6 +3,7 @@
 #include "node.hpp"
 int yyerror(const char *s);
 extern int yylex(void);
+extern Node* rootNode;
 %}
 
 %token<node> T_VAR T_COMMENT T_FLOAT_NUMBER T_STRING T_INT_NUMBER T_ASSIGNMENT
@@ -21,8 +22,6 @@ extern int yylex(void);
     std::string *string;
     int token;
     Node* node;
-    //int int_val;
-    //double float_val;
 }
 
 %start program
@@ -33,25 +32,25 @@ program : function program
             { $$ = new Node(                 
                     *($1->value) + *( new std::string(" ") ) + *($2->value) + *( new std::string(" ") )
             ); 
-            std::cout<<*($$->value)<<std::endl<<std::endl;
+            rootNode = $$;
             }
     | constant program      
             { $$ = new Node(  
                 *($1->value) + *( new std::string(" ") ) + *($2->value) + *( new std::string(" ") ) 
             );
-            std::cout<<*($$->value)<<std::endl<<std::endl;
+            rootNode = $$;
             }
     | T_COMMENT program     
             { $$ = new Node(   
                     *($2->value) + *( new std::string(" ") ) 
             ); 
-            std::cout<<*($$->value)<<std::endl<<std::endl;
+            rootNode = $$;
             }
     | mainFunction          
             { $$ = new Node(   
                     *($1->value) + *( new std::string(" ") )
             ); 
-            std::cout<<*($$->value)<<std::endl<<std::endl;
+            rootNode = $$;
             }
     ;
 

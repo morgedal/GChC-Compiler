@@ -19,5 +19,5 @@ fn fibonacci( całkowita n ) -> całkowita
 
 fn start()
 {
-    ~ fibonacci( 2 );
+    ~ fibonacci( 7 );
 }
