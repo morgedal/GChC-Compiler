@@ -1,0 +1,6 @@
+# Hello world cant be simpler #
+
+fn start()
+{
+    ~ "Hello world";
+}
